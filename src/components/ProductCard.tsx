@@ -82,8 +82,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ProductCard: React.FC<IProductCArdProps> = (props) => {
     const classes = useStyles()
-    const [alreadyShipping, setAlreadyShipping] = useState(false)
-    const alreadyShippingCheck: object = shippingItems.find(item => item.id === props.id)
+    const [alreadyShipping, setAlreadyShipping] = useState(false) // Если true, то меняется кнопка отправки товара в корзину
+    const alreadyShippingCheck: object = shippingItems.find(item => item.id === props.id) // Провера товаров, уже находящихся в корзине
 
     const addingToCart = () => {
         addToCart(props.id, props.image, props.name, props.price)
