@@ -77,11 +77,13 @@ export const ProductCard: React.FC<IProductCArdProps> = (props) => {
             </div>
             <Typography variant="h5" className={classes.productName}>{props.name}</Typography>
             <Typography variant="h4" className={classes.productPrice}>{props.price} ₽</Typography>
-            <Button disabled={alreadyShipping} onClick={addingToCart} variant="contained" className={classes.productButton} fullWidth>{alreadyShipping ? 'В корзине' : 'В корзину'}</Button>
+            <Button disabled={alreadyShipping}
+                    onClick={addingToCart}
+                    variant="contained"
+                    className={classes.productButton}
+                    fullWidth>
+                {alreadyShipping ? 'В корзине' : 'В корзину'}
+            </Button>
         </div>
     )
 };
-
-//onClick={( (event: React.MouseEvent<HTMLElement>) => {
-//                 addingToCart
-//             })}

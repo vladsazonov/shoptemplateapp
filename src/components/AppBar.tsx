@@ -2,7 +2,8 @@ import React from 'react';
 import {makeStyles} from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ShoppingCart from "@material-ui/icons/ShoppingCartOutlined"
+import ShoppingCart from "@material-ui/icons/ShoppingCartOutlined";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -27,8 +28,13 @@ const useStyles = makeStyles({
     },
     shoppingCartIcon: {
         textTransform: 'none',
-        marginLeft: 'auto',
         fontSize: '17pt'
+    },
+    linkStyle: {
+        textDecoration: 'none'
+    },
+    linkMargin: {
+        marginLeft: 'auto'
     }
 });
 
@@ -37,9 +43,15 @@ export const AppBar: React.FC = () => {
 
     return (
         <div className={classes.root}>
+            <Link to="/catalog" className={classes.linkStyle}>
             <Typography variant="h4" className={classes.logoText}>Good Store.</Typography>
-            <Button variant="text" className={classes.catalogButton}>Каталог</Button>
-            <Button variant="text" className={classes.shoppingCartIcon}><ShoppingCart/></Button>
+            </Link>
+            <Link to="/catalog" className={classes.linkStyle}>
+                <Button variant="text" className={classes.catalogButton}>Каталог</Button>
+            </Link>
+            <Link to="/cart" className={classes.linkStyle + ' ' + classes.linkMargin}>
+                <Button variant="text" className={classes.shoppingCartIcon}><ShoppingCart/></Button>
+            </Link>
         </div>
     )
 };
