@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {addToCart, shippingItems} from "../service"
+import {Link} from "react-router-dom";
 
 interface IProductCArdProps {
     id: number,
@@ -51,6 +52,24 @@ const useStyles = makeStyles({
         height: 50,
         backgroundColor: '#000',
         color: '#fff',
+        '&:hover': {
+            backgroundColor: '#551a8b',
+        },
+    },
+    toCartButton: {
+        textDecoration: 'none',
+        boxShadow: 'none',
+        height: 50,
+        backgroundColor: '#551a8b',
+        color: '#fff',
+        '&:hover': {
+            backgroundColor: '#33155e',
+        },
+    },
+    toCartLink: {
+        marginTop: 'auto',
+        textDecoration: 'none',
+        width: '100%',
     }
 });
 
@@ -73,17 +92,30 @@ export const ProductCard: React.FC<IProductCArdProps> = (props) => {
     return (
         <div className={classes.root}>
             <div className={classes.productImageArea}>
-                <img className={classes.productImage} src={props.image} alt="productCover"/>
+                <img className={classes.productImage} src={props.image} alt={'productCover ' + props.id}/>
             </div>
             <Typography variant="h5" className={classes.productName}>{props.name}</Typography>
             <Typography variant="h4" className={classes.productPrice}>{props.price} ₽</Typography>
-            <Button disabled={alreadyShipping}
-                    onClick={addingToCart}
-                    variant="contained"
-                    className={classes.productButton}
-                    fullWidth>
-                {alreadyShipping ? 'В корзине' : 'В корзину'}
-            </Button>
+            {
+                !alreadyShipping ? (
+                    <Button
+                        onClick={addingToCart}
+                        variant="contained"
+                        className={classes.productButton}
+                        fullWidth>
+                        В корзину
+                    </Button>
+                ) : (
+                    <Link to='/cart' className={classes.toCartLink}>
+                        <Button
+                            variant="contained"
+                            className={classes.toCartButton}
+                            fullWidth>
+                            Оформить заказ
+                        </Button>
+                    </Link>
+                )
+            }
         </div>
     )
 };

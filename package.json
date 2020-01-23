@@ -21,6 +21,7 @@
     "react-jss": "^10.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "redux": "^4.0.5",
     "typescript": "^3.7.5"
   },
   "scripts": {

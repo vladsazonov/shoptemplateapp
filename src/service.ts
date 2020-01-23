@@ -14,7 +14,9 @@ export const getCatalog = (): Promise<any> => {
 
     return fetch('https://appevent.ru/dev/task1/catalog')
         .then(res => res.json())
-        .catch(e => console.log('Error ', e))
+        .catch(e => {
+            console.log('Произошла ошибка' + e)
+        })
 }
 
 export const addToCart = (Id: number, Image: string, Name: string, Price: number) => {
