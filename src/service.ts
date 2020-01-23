@@ -7,7 +7,7 @@ interface IStorageItem {
     price: number
 }
 
-export let shippingItems: any[] = observable(JSON.parse(localStorage.getItem('shippingItems') as any) || []);
+export let shippingItems: any[] = observable(JSON.parse(localStorage.getItem('shippingItems') as any) || []); // Получаем массив товаров, находящихся в корзине, из localstorage
 
 export const getCatalog = (): Promise<any> => {
     console.log('Fetch started')
@@ -20,7 +20,7 @@ export const getCatalog = (): Promise<any> => {
 }
 
 export const addToCart = (Id: number, Image: string, Name: string, Price: number) => {
-    const sameItem = shippingItems.find(item => item.id === Id);
+    const sameItem = shippingItems.find(item => item.id === Id); // Ищем нет ли данного товара в корзине
 
     if (!sameItem) {
         let storageItem: IStorageItem = {
@@ -29,14 +29,13 @@ export const addToCart = (Id: number, Image: string, Name: string, Price: number
             name: Name,
             price: Price,
         }
-
         shippingItems.push(storageItem)
         localStorage.setItem('shippingItems', JSON.stringify(shippingItems));
     }
 }
 
 export const removeFromCart = (Id: number) => {
-    const deleteItems = shippingItems.findIndex(elem => elem.id === Id)
+    const deleteItems = shippingItems.findIndex(elem => elem.id === Id) // Ищем удаляемый товар
 
     shippingItems.splice(deleteItems, 1)
     localStorage.setItem('shippingItems', JSON.stringify(shippingItems));

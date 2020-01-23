@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89dbf71f-6688-42c4-bd49-33c4c9b1ca43" name="Default Changelist" comment="-fix develop">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test.tsx" beforeDir="false" />
+    <list default="true" id="89dbf71f-6688-42c4-bd49-33c4c9b1ca43" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/components/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShipingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShipingCart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579808237304</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-fix develop">
+      <created>1579809549948</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579809549948</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +189,7 @@
     <MESSAGE value="-deleting in real time&#10;-bug fixes" />
     <MESSAGE value="-deleting in real time&#10;-bug fixes&#10;-refactor" />
     <MESSAGE value="-adaptive product card grid" />
-    <option name="LAST_COMMIT_MESSAGE" value="-adaptive product card grid" />
+    <MESSAGE value="-fix develop" />
+    <option name="LAST_COMMIT_MESSAGE" value="-fix develop" />
   </component>
 </project>

@@ -78,10 +78,10 @@ export const ShippingCart: React.FC = observer(() => {
 
     const makePurchase = () => {
         clearCart()
-        setPurchaseCompletion(true)
+        setPurchaseCompletion(true) // Меняем кнопку оформления заказа
     }
 
-    const shippingItemsView = (): any => {
+    const shippingItemsView = (): ReactElement[] | ReactElement => {
         if (shippingItems) {
             return (
                 shippingItems.map((elem) => {
@@ -94,7 +94,7 @@ export const ShippingCart: React.FC = observer(() => {
                     )
                 })
             )
-        } else return (<h1>ашипка</h1>)
+        } else return <Typography variant="caption">Не удалось получить данные</Typography>
     }
 
     const priceCount = (): number | ReactElement => {
