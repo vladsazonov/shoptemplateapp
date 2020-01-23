@@ -29,8 +29,13 @@ const useStyles = makeStyles({
         fontSize: '17pt'
     },
     shoppingCartIcon: {
+        marginLeft: 5,
+    },
+    shoppingCarButton: {
         textTransform: 'none',
-        fontSize: '17pt'
+        fontSize: '17pt',
+        color: '#551a8b',
+        fontWeight: 400,
     },
     linkStyle: {
         textDecoration: 'none',
@@ -63,11 +68,11 @@ export const AppBar: React.FC = observer(() => {
                 <Button variant="text" className={classes.catalogButton}>Каталог</Button>
             </Link>
             <Link to="/cart" className={classes.linkStyle + ' ' + classes.linkMargin}>
-                <Button variant="text" className={classes.shoppingCartIcon}>
+                <Button variant="text" className={classes.shoppingCarButton}>
                     {
                         shippingItems.length > 0 ? shippingItems.length : ''
                     }
-                    <ShoppingCart/>
+                    <ShoppingCart className={classes.shoppingCartIcon}/>
                 </Button>
             </Link>
         </div>
