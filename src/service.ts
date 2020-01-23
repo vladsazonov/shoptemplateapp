@@ -41,3 +41,8 @@ export const removeFromCart = (Id: number) => {
     shippingItems.splice(deleteItems, 1)
     localStorage.setItem('shippingItems', JSON.stringify(shippingItems));
 }
+
+export const clearCart = () => {
+    shippingItems.length = 0
+    localStorage.setItem('shippingItems', JSON.stringify(shippingItems));
+}

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {makeStyles} from "@material-ui/styles";
+import {createStyles, Theme, makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {addToCart, shippingItems} from "../service"
@@ -11,67 +11,74 @@ interface IProductCArdProps {
     name: string,
     price: number,
 }
-
-const useStyles = makeStyles({
-    root: {
-        padding: 26,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        height: 570,
-        width: 440,
-        margin: '15px 17px',
-        boxShadow: '0 1px 10px 0 rgba(0, 0, 0, 0.06)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center'
-    },
-    productImageArea: {
-        height: 280,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    productImage: {
-        height: '100%',
-        maxWidth: '100%',
-        objectFit: 'contain',
-    },
-    productName: {
-        fontSize: '2rem',
-        margin: '30px 0 10px 0'
-    },
-    productPrice: {
-        fontSize: '2rem',
-        fontWeight: 'bold'
-    },
-    productButton: {
-        textDecoration: 'none',
-        marginTop: 'auto',
-        boxShadow: 'none',
-        height: 50,
-        backgroundColor: '#000',
-        color: '#fff',
-        '&:hover': {
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            padding: 26,
+            backgroundColor: '#fff',
+            borderRadius: 10,
+            height: 570,
+            width: 440,
+            boxShadow: '0 1px 10px 0 rgba(0, 0, 0, 0.06)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            flex: '1 0 31%',
+            boxSizing: 'border-box',
+            margin: '1rem 1.05em',
+            [theme.breakpoints.down('sm')]: {
+                flex: '1 0 46%',
+            },
+           
+        },
+        productImageArea: {
+            height: 280,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        productImage: {
+            height: '100%',
+            maxWidth: '100%',
+            objectFit: 'contain',
+        },
+        productName: {
+            fontSize: '1.5rem',
+            margin: '30px 0 10px 0'
+        },
+        productPrice: {
+            fontSize: '2rem',
+            fontWeight: 'bold'
+        },
+        productButton: {
+            textDecoration: 'none',
+            marginTop: 'auto',
+            boxShadow: 'none',
+            height: 50,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+                backgroundColor: '#551a8b',
+            },
+        },
+        toCartButton: {
+            textDecoration: 'none',
+            boxShadow: 'none',
+            height: 50,
             backgroundColor: '#551a8b',
+            color: '#fff',
+            '&:hover': {
+                backgroundColor: '#33155e',
+            },
         },
-    },
-    toCartButton: {
-        textDecoration: 'none',
-        boxShadow: 'none',
-        height: 50,
-        backgroundColor: '#551a8b',
-        color: '#fff',
-        '&:hover': {
-            backgroundColor: '#33155e',
-        },
-    },
-    toCartLink: {
-        marginTop: 'auto',
-        textDecoration: 'none',
-        width: '100%',
-    }
-});
+        toCartLink: {
+            marginTop: 'auto',
+            textDecoration: 'none',
+            width: '100%',
+        }
+    }),
+);
 
 export const ProductCard: React.FC<IProductCArdProps> = (props) => {
     const classes = useStyles()

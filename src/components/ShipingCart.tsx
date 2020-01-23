@@ -1,6 +1,6 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useState} from 'react';
 import {makeStyles} from "@material-ui/styles";
-import {shippingItems} from "../service";
+import {shippingItems, clearCart} from "../service";
 import {ShippingItemCard} from "./ShippingItemCard";
 import Typography from "@material-ui/core/Typography";
 import {observer} from "mobx-react-lite"
@@ -43,6 +43,9 @@ const useStyles = makeStyles({
         backgroundColor: '#000',
         color: '#fff',
         marginTop: 50,
+        '&:hover': {
+            backgroundColor: '#551a8b',
+        },
     },
     cartSummaryHeader: {
         fontSize: '2.3rem',
@@ -63,12 +66,20 @@ const useStyles = makeStyles({
         fontWeight: 'lighter',
         color: '#cacaca',
         fontSize: '2rem'
-
+    },
+    purchaseCompletion: {
+        backgroundColor: '#551a8b',
     }
 });
 
 export const ShippingCart: React.FC = observer(() => {
     const classes = useStyles();
+    const [purchaseCompletion, setPurchaseCompletion] = useState<boolean>(false)
+
+    const makePurchase = () => {
+        clearCart()
+        setPurchaseCompletion(true)
+    }
 
     const shippingItemsView = (): any => {
         if (shippingItems) {
@@ -110,11 +121,15 @@ export const ShippingCart: React.FC = observer(() => {
                 <Typography className={classes.cartSummaryProductCount} variant="h4">
                     Товаров в корзине: {shippingItems.length} шт.
                 </Typography>
-                <Typography className={classes.cartSummaryProductPrice} variant="h4">{priceCount()} ₽</Typography>
+                <Typography className={classes.cartSummaryProductPrice}  variant="h4">{priceCount()} ₽</Typography>
                 <Button disabled={shippingItems.length === 0}
                         variant="contained"
-                        className={classes.checkoutButton}>
-                    Оформить
+                        className={classes.checkoutButton}
+                        style={{backgroundColor: purchaseCompletion ? '#551a8b' : '', color:  purchaseCompletion ? '#fff' : ''}}
+                        onClick={makePurchase}>
+                    {
+                        purchaseCompletion ? 'Спасибо за покупку' : 'Оформить'
+                    }
                 </Button>
             </div>
         </>
