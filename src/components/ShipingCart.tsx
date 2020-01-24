@@ -7,12 +7,7 @@ import {observer} from "mobx-react-lite"
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
-    root: {
-        marginTop: 71,
-        padding: '35px 71px',
-        display: 'flex',
-    },
-    shippingItemsArea: {
+    itemsArea: {
         position: 'absolute',
         overflowY: 'auto',
         bottom: 0,
@@ -22,7 +17,7 @@ const useStyles = makeStyles({
         padding: '2%',
         backgroundColor: '#fff',
     },
-    cartSummaryArea: {
+    summaryArea: {
         position: 'absolute',
         bottom: 0,
         top: 71,
@@ -32,10 +27,10 @@ const useStyles = makeStyles({
         backgroundColor: '#f6f6f6',
         textAlign: 'start'
     },
-    cartHeader: {
+    itemsArea__header: {
         fontWeight: 'bold',
     },
-    checkoutButton: {
+    summaryArea__checkout: {
         textDecoration: 'none',
         boxShadow: 'none',
         height: 50,
@@ -47,19 +42,19 @@ const useStyles = makeStyles({
             backgroundColor: '#551a8b',
         },
     },
-    cartSummaryHeader: {
+    summaryArea__summaryHeader: {
         fontSize: '2.3rem',
     },
-    cartSummaryProductCount: {
+    summaryArea__productCounter: {
         fontSize: '1.5rem',
         marginTop: 100,
     },
-    cartSummaryProductPrice: {
+    summaryArea_price: {
         fontSize: '2.1rem',
         fontWeight: 'bold',
         marginTop: 10
     },
-    emptyCart: {
+    itemsArea__emptyCart: {
         position: 'absolute',
         top: '50%',
         left: '40%',
@@ -108,23 +103,24 @@ export const ShippingCart: React.FC = observer(() => {
 
     return (
         <>
-            <div className={classes.shippingItemsArea}>
-                <Typography variant="h3" className={classes.cartHeader}>Корзина</Typography>
+            <div className={classes.itemsArea}>
+                <Typography variant="h3" className={classes.itemsArea__header}>Корзина</Typography>
                 {
                     shippingItems.length === 0 ?
-                        <Typography className={classes.emptyCart} variant="h6">Корзина пуста</Typography> : ''
+                        <Typography className={classes.itemsArea__emptyCart} variant="h6">Корзина пуста</Typography> : ''
                 }
                 {shippingItemsView()}
             </div>
-            <div className={classes.cartSummaryArea}>
-                <Typography className={classes.cartSummaryHeader} variant="h3">Итоговая корзина</Typography>
-                <Typography className={classes.cartSummaryProductCount} variant="h4">
+
+            <div className={classes.summaryArea}>
+                <Typography className={classes.summaryArea__summaryHeader} variant="h3">Итоговая корзина</Typography>
+                <Typography className={classes.summaryArea__productCounter} variant="h4">
                     Товаров в корзине: {shippingItems.length} шт.
                 </Typography>
-                <Typography className={classes.cartSummaryProductPrice}  variant="h4">{priceCount()} ₽</Typography>
+                <Typography className={classes.summaryArea_price} variant="h4">{priceCount()} ₽</Typography>
                 <Button disabled={shippingItems.length === 0}
                         variant="contained"
-                        className={classes.checkoutButton}
+                        className={classes.summaryArea__checkout}
                         style={{backgroundColor: purchaseCompletion ? '#551a8b' : '', color:  purchaseCompletion ? '#fff' : ''}}
                         onClick={makePurchase}>
                     {

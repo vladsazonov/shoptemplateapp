@@ -42,6 +42,6 @@ export const removeFromCart = (Id: number) => {
 }
 
 export const clearCart = () => {
-    shippingItems.length = 0
+    shippingItems.length = 0 // отчистка массива товаров в корзине
     localStorage.setItem('shippingItems', JSON.stringify(shippingItems));
 }

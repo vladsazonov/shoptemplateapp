@@ -13,31 +13,31 @@ interface IShippingItemProps {
 }
 
 const useStyles = makeStyles({
-    root: {
+    shippingItem: {
         margin: '60px 0',
         display: 'flex',
         alignItems: 'center',
     },
-    shippingItemImageArea: {
+    shippingItem__imageArea: {
         height: 100,
         width: 200,
         display: 'flex',
         alignItems: 'start',
         justifyContent: 'center'
     },
-    shippingItemImage: {
+    shippingItem__image: {
         height: '100%',
         maxWidth: '100%',
         objectFit: 'contain',
     },
-    shippingItemRemoveButton: {
+    shippingItem__removeButton: {
         marginLeft: 'auto',
     },
-    shippingItemName: {
+    shippingItem__name: {
         fontSize: '1.15rem',
         fontWeight: 400,
     },
-    shippingItemPrice: {
+    shippingItem__price: {
         fontWeight: 'bold',
     },
 });
@@ -46,16 +46,16 @@ export const ShippingItemCard: React.FC<IShippingItemProps> = (props) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <div className={classes.shippingItemImageArea}>
-                <img className={classes.shippingItemImage} src={props.image}
+        <div className={classes.shippingItem}>
+            <div className={classes.shippingItem__imageArea}>
+                <img className={classes.shippingItem__image} src={props.image}
                      alt={'shippingItemCover' + props.id.toString()}/>
             </div>
             <div>
-                <Typography className={classes.shippingItemName} variant="h6">{props.name}</Typography>
-                <Typography className={classes.shippingItemPrice} variant="h4">{props.price} ₽</Typography>
+                <Typography className={classes.shippingItem__name} variant="h6">{props.name}</Typography>
+                <Typography className={classes.shippingItem__price} variant="h4">{props.price} ₽</Typography>
             </div>
-            <Button className={classes.shippingItemRemoveButton}
+            <Button className={classes.shippingItem__removeButton}
                     onClick={(event: React.MouseEvent<HTMLElement>) => {
                         removeFromCart(props.id)
                     }}>

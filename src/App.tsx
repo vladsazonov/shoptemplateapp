@@ -13,7 +13,7 @@ function ScreenSwitcher() {
                 <Route exact path="/catalog">
                     <CatalogPage/>
                 </Route>
-                <Route path="/cart">
+                <Route exact path="/cart">
                     <ShippingCart/>
                 </Route>
             </Switch>
