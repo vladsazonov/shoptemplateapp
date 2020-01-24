@@ -8,7 +8,7 @@ import {shippingItems} from "../service";
 import {observer} from "mobx-react-lite"
 
 const useStyles = makeStyles({
-    root: {
+    appBar: {
         position: 'fixed',
         top: 0,
         left: 0,
@@ -20,59 +20,51 @@ const useStyles = makeStyles({
         zIndex: 1,
         boxShadow: '0 1px 10px 0 rgba(0, 0, 0, 0.09)',
     },
-    logoText: {
+    appBar__logoText: {
         fontWeight: 'bold',
     },
-    catalogButton: {
+    appBar__catalogButton: {
         textTransform: 'none',
         marginLeft: 73,
         fontSize: '17pt'
     },
-    shoppingCartIcon: {
+    appBar__shoppingCartIcon: {
         marginLeft: 5,
     },
-    shoppingCarButton: {
+    appBar__shoppingCartButton: {
         textTransform: 'none',
         fontSize: '17pt',
         color: '#551a8b',
         fontWeight: 400,
     },
-    linkStyle: {
+    appBar__link: {
         textDecoration: 'none',
     },
-    logoLink: {
+    logo: {
         color: '#551a8b',
     },
-    linkMargin: {
+    margin: {
         marginLeft: 'auto'
     },
-    placeAnOrderButton: {
-        textDecoration: 'none',
-        marginTop: 'auto',
-        boxShadow: 'none',
-        height: 50,
-        backgroundColor: '#000',
-        color: '#fff',
-    }
 });
 
 export const AppBar: React.FC = observer(() => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <Link to="/catalog" className={classes.linkStyle + ' ' + classes.logoLink}>
-                <Typography variant="h4" className={classes.logoText}>Good Store.</Typography>
+        <div className={classes.appBar}>
+            <Link to="/catalog" className={classes.appBar__link + ' ' + classes.logo}>
+                <Typography variant="h4" className={classes.appBar__logoText}>Good Store.</Typography>
             </Link>
-            <Link to="/catalog" className={classes.linkStyle}>
-                <Button variant="text" className={classes.catalogButton}>Каталог</Button>
+            <Link to="/catalog" className={classes.appBar__link}>
+                <Button variant="text" className={classes.appBar__catalogButton}>Каталог</Button>
             </Link>
-            <Link to="/cart" className={classes.linkStyle + ' ' + classes.linkMargin}>
-                <Button variant="text" className={classes.shoppingCarButton}>
+            <Link to="/cart" className={classes.appBar__link + ' ' + classes.margin}>
+                <Button variant="text" className={classes.appBar__shoppingCartButton}>
                     {
                         shippingItems.length > 0 ? shippingItems.length : ''
                     }
-                    <ShoppingCart className={classes.shoppingCartIcon}/>
+                    <ShoppingCart className={classes.appBar__shoppingCartIcon}/>
                 </Button>
             </Link>
         </div>

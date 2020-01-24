@@ -11,9 +11,10 @@ interface IProductCArdProps {
     name: string,
     price: number,
 }
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
+        productCard: {
             padding: 26,
             backgroundColor: '#fff',
             borderRadius: 10,
@@ -30,28 +31,27 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.down('sm')]: {
                 flex: '1 0 46%',
             },
-           
         },
-        productImageArea: {
+        productCard__imageArea: {
             height: 280,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
         },
-        productImage: {
+        productCard__image: {
             height: '100%',
             maxWidth: '100%',
             objectFit: 'contain',
         },
-        productName: {
+        productCard__name: {
             fontSize: '1.5rem',
             margin: '30px 0 10px 0'
         },
-        productPrice: {
+        productCard__price: {
             fontSize: '2rem',
             fontWeight: 'bold'
         },
-        productButton: {
+        productCard__button: {
             textDecoration: 'none',
             marginTop: 'auto',
             boxShadow: 'none',
@@ -62,17 +62,13 @@ const useStyles = makeStyles((theme: Theme) =>
                 backgroundColor: '#551a8b',
             },
         },
-        toCartButton: {
-            textDecoration: 'none',
-            boxShadow: 'none',
-            height: 50,
+        toCart: {
             backgroundColor: '#551a8b',
-            color: '#fff',
             '&:hover': {
                 backgroundColor: '#33155e',
             },
         },
-        toCartLink: {
+        productCard__link: {
             marginTop: 'auto',
             textDecoration: 'none',
             width: '100%',
@@ -97,26 +93,26 @@ export const ProductCard: React.FC<IProductCArdProps> = (props) => {
     }, [alreadyShipping, alreadyShippingCheck])
 
     return (
-        <div className={classes.root}>
-            <div className={classes.productImageArea}>
-                <img className={classes.productImage} src={props.image} alt={'productCover ' + props.id}/>
+        <div className={classes.productCard}>
+            <div className={classes.productCard__imageArea}>
+                <img className={classes.productCard__image} src={props.image} alt={'productCover ' + props.id}/>
             </div>
-            <Typography variant="h5" className={classes.productName}>{props.name}</Typography>
-            <Typography variant="h4" className={classes.productPrice}>{props.price} ₽</Typography>
+            <Typography variant="h5" className={classes.productCard__name}>{props.name}</Typography>
+            <Typography variant="h4" className={classes.productCard__price}>{props.price} ₽</Typography>
             {
                 !alreadyShipping ? (
                     <Button
                         onClick={addingToCart}
                         variant="contained"
-                        className={classes.productButton}
+                        className={classes.productCard__button}
                         fullWidth>
                         В корзину
                     </Button>
                 ) : (
-                    <Link to='/cart' className={classes.toCartLink}>
+                    <Link to='/cart' className={classes.productCard__link}>
                         <Button
                             variant="contained"
-                            className={classes.toCartButton}
+                            className={classes.productCard__button + ' ' + classes.toCart}
                             fullWidth>
                             Оформить заказ
                         </Button>

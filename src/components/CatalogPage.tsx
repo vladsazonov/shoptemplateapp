@@ -6,20 +6,20 @@ import {ProductCard} from "./ProductCard";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
-    root: {
+    catalog: {
         marginTop: 71,
         padding: '35px 71px',
     },
-    catalogHeader: {
+    catalog__header: {
         fontWeight: 'bold',
     },
-    catalogArea: {
+    catalog__area: {
         marginTop: 20,
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center'
     },
-    loader: {
+    catalog__loader: {
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -63,15 +63,15 @@ export const CatalogPage: React.FC = () => {
                     )
                 })
             )
-        } else return <CircularProgress className={classes.loader}/>
+        } else return <CircularProgress className={classes.catalog__loader}/>
     }
 
     return (
-        <div className={classes.root}>
-            <Typography variant="h3" className={classes.catalogHeader}>Каталог</Typography>
-            <div className={classes.catalogArea}>
+        <div className={classes.catalog}>
+            <Typography variant="h3" className={classes.catalog__header}>Каталог</Typography>
+            <div className={classes.catalog__area}>
                 {
-                    !isLoading ? catalogView() : <CircularProgress className={classes.loader}/>
+                    !isLoading ? catalogView() : <CircularProgress className={classes.catalog__loader}/>
                 }
             </div>
         </div>
