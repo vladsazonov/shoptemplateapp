@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         left: 0,
         right: '35%',
         top: 71,
-        padding: '2%',
+        padding: '26px 71px',
         backgroundColor: '#fff',
     },
     summaryArea: {
